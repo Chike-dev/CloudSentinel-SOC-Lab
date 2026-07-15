@@ -7,7 +7,6 @@
 ![Security%20Hub](https://img.shields.io/badge/Security%20Hub-Findings%20Aggregation-blue)
 ![EventBridge](https://img.shields.io/badge/EventBridge-Event%20Routing-purple)
 ![Lambda](https://img.shields.io/badge/Lambda-Python-green)
-![Terraform](https://img.shields.io/badge/Terraform-Planned-lightgrey)
 
 ---
 
@@ -149,7 +148,6 @@ Additional detail: [`docs/design-decisions.md`](docs/design-decisions.md)
 | Incident parsing and response logging | Lambda + CloudWatch Logs | Validated |
 | EC2 role credential exfiltration | GuardDuty | Validated with real finding |
 | Internal AWS enumeration from EC2 | CloudTrail / GuardDuty telemetry | Observed; did not reliably cross severity `>= 7` alone |
-| External port scanning | VPC Flow Logs + GuardDuty | Planned for v2 |
 
 See [`docs/detection-coverage.md`](docs/detection-coverage.md).
 
@@ -167,14 +165,12 @@ A complete response plan must account for:
 - CloudTrail investigation,
 - and containment of the affected workload.
 
-This is captured in the planned production hardening path for the Lambda responder.
-
 ---
 
 ## Repository structure
 
 ```text
-CloudSentinel-SOC-Lab/
+CloudSentinel-SOC-Project/
 ├── README.md
 ├── architecture/
 │   ├── cloudsentinel-architecture.png
@@ -189,10 +185,8 @@ CloudSentinel-SOC-Lab/
 │   └── guardduty_high_severity_rule.json
 ├── lambda/
 │   └── incident_responder.py
-├── screenshots/
-│   └── build and validation evidence
-└── terraform/
-    └── planned IaC implementation
+└── screenshots/
+    └── build and validation evidence
 ```
 
 ---
@@ -203,19 +197,6 @@ CloudSentinel-SOC-Lab/
 - EventBridge automation is scoped to GuardDuty findings with severity `>= 7`.
 - The deployment is single-region (`us-east-1`). A production deployment would require multi-region event routing or centralized aggregation.
 - Security Hub is used for visibility and aggregation; the current automation source is GuardDuty directly.
-- Terraform codification is planned but not yet implemented.
-- External port-scan validation with VPC Flow Logs is planned for v2.
-
----
-
-## Roadmap
-
-- Add VPC Flow Logs and validate external network reconnaissance detection.
-- Convert the console build into Terraform.
-- Add automated containment options behind explicit safety flags.
-- Add IAM role session revocation logic to the Lambda responder.
-- Add Slack, Teams, PagerDuty, or ticketing integration as an alternate notification channel.
-- Add centralized multi-region finding aggregation.
 
 ---
 

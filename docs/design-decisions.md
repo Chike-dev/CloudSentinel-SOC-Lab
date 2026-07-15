@@ -28,7 +28,7 @@ This document captures the major architectural decisions behind CloudSentinel. T
 
 **Decision:** Use GuardDuty as the main threat detection engine.
 
-**Rationale:** GuardDuty provides managed AWS threat detection with severity-scored findings, reducing the need to write custom detection logic for the first version.
+**Rationale:** GuardDuty provides managed AWS threat detection with severity-scored findings, reducing the need to write custom detection logic.
 
 **Trade-off:** GuardDuty is a managed detector, so detection logic is not fully transparent or customizable.
 
@@ -66,7 +66,7 @@ This document captures the major architectural decisions behind CloudSentinel. T
 
 ## ADR-007 — Keep Lambda in simulation mode
 
-**Decision:** Lambda parses and logs incident details, but does not automatically quarantine resources in v1.
+**Decision:** Lambda parses and logs incident details, but does not automatically quarantine resources in this build.
 
 **Rationale:** Simulation mode demonstrates response logic safely without modifying infrastructure during a lab exercise.
 

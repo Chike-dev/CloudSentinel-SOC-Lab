@@ -129,8 +129,6 @@ A stronger production response would include:
 - rotating any related long-term credentials if discovered,
 - and documenting the timeline from credential theft to detection and containment.
 
-This finding directly informed the production-hardening roadmap for the Lambda responder.
-
 ---
 
 ## Evidence summary
@@ -146,14 +144,6 @@ This finding directly informed the production-hardening roadmap for the Lambda r
 | `16-real-finding-guardduty.png` | Real GuardDuty credential-exfiltration finding |
 | `17-real-finding-email.png` | Real finding email alert |
 | `18-securityhub-real-finding.png` | Real finding aggregated in Security Hub |
-
----
-
-## Simulation B — planned v2 extension
-
-External port scanning was not included in this version. The planned extension will enable VPC Flow Logs and perform authorized network reconnaissance against the lab EC2 instance to validate GuardDuty network-reconnaissance detections such as port probing.
-
-This is documented as roadmap work rather than claimed as completed validation.
 
 ---
 

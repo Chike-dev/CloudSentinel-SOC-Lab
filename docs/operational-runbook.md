@@ -78,7 +78,7 @@ Depending on impact and business context:
 
 ---
 
-## Lambda responder behavior in v1
+## Lambda responder behavior
 
 The current Lambda responder runs in simulation mode. It:
 
@@ -88,18 +88,4 @@ The current Lambda responder runs in simulation mode. It:
 - detects credential-related finding types,
 - logs simulated containment actions to CloudWatch Logs.
 
-It does not yet modify AWS resources.
-
----
-
-## Production hardening candidates
-
-Future versions of the responder could:
-
-- create or apply a quarantine security group,
-- detach the compromised instance profile,
-- revoke active IAM role sessions,
-- tag affected resources with incident metadata,
-- open a ticket in a case-management system,
-- notify Slack, Teams, or PagerDuty,
-- and create a structured incident record in S3 or DynamoDB.
+It does not modify AWS resources.

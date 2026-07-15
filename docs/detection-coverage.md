@@ -1,6 +1,6 @@
 # CloudSentinel — Detection Coverage
 
-This document summarizes what CloudSentinel currently detects, what was validated, and what remains planned.
+This document summarizes what CloudSentinel currently detects and what was validated.
 
 ---
 
@@ -23,18 +23,6 @@ This document summarizes what CloudSentinel currently detects, what was validate
 | Internal AWS enumeration from EC2 | Commands such as `sts get-caller-identity`, S3 listing, IAM listing, role listing, and region listing were executed | Valid post-compromise reconnaissance, but not guaranteed to trigger a severity `>= 7` finding by itself |
 
 This is a useful detection-engineering lesson: suspicious behavior does not always equal high-confidence detection. The automation threshold should reflect signal quality and operational impact.
-
----
-
-## Planned coverage
-
-| Behavior | Planned source | Notes |
-|---|---|---|
-| External port scanning | VPC Flow Logs + GuardDuty | Planned Simulation B |
-| EC2 quarantine | Lambda + EC2 API | Future containment mode |
-| Role-session revocation | IAM response workflow | Future credential containment improvement |
-| Multi-region detection routing | EventBridge / Security Hub aggregation | Future production-hardening step |
-| Third-party notification | Slack, Teams, PagerDuty, or ticketing | Future operational integration |
 
 ---
 
